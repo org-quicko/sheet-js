@@ -1,7 +1,7 @@
 {
 	"name": "@org-quicko/sheet",
 	"version": "1.0.0",
-	"description": "A library in typescript for sheet entities across Quicko and Sandbox",
+	"description": "TypeScript toolkit featuring spreadsheet-like data structure & related utilities for modern internet applications.",
 	"author": "Quicko <developer@quicko.org.in>",
 	"main": "dist/cjs/index.cjs",
 	"module": "dist/esm/index.js",
