@@ -1,0 +1,79 @@
+{
+	"name": "@org-quicko/sheet",
+	"version": "1.0.0",
+	"description": "A library in typescript for sheet entities across Quicko and Sandbox",
+	"author": "Quicko <developer@quicko.org.in>",
+	"main": "dist/cjs/index.cjs",
+	"module": "dist/esm/index.js",
+	"types": "dist/types/index.d.ts",
+	"type": "module",
+	"scripts": {
+		"clean": "rm -rf dist && npm cache clean --force",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"prebuild": "npm run clean && npm run lint",
+		"build": "rollup -c"
+	},
+	"license": "ISC",
+	"files": [
+		"dist/**/*"
+	],
+	"exports": {
+		".": {
+			"require": "./dist/cjs/index.cjs",
+			"import": "./dist/esm/index.js",
+			"types": "./dist/types/index.d.ts"
+		},
+		"./beans": {
+			"require": "./dist/cjs/beans/index.cjs",
+			"import": "./dist/esm/beans/index.js",
+			"types": "./dist/types/beans/index.d.ts"
+		},
+		"./beans/*": {
+			"require": "./dist/cjs/beans/*.cjs",
+			"import": "./dist/esm/beans/*.js",
+			"types": "./dist/types/beans/*.d.ts"
+		}
+	},
+	"typesVersions": {
+		"*": {
+			".": [
+				"./dist/types/index.d.ts"
+			],
+			"./beans": [
+				"./dist/types/src/beans/index.d.ts"
+			]
+		}
+	},
+	"directories": {
+		"lib": "./dist"
+	},
+	"engines": {
+		"node": ">=8.0.0"
+	},
+	"dependencies": {
+		"@org-quicko/core": "^1.0.2",
+		"class-transformer": "^0.5.1",
+		"class-validator": "^0.14.0",
+		"reflect-metadata": "^0.2.2",
+		"tslib": "^2.8.1",
+		"xlsx": "https://cdn.sheetjs.com/xlsx-0.20.1/xlsx-0.20.1.tgz"
+	},
+	"devDependencies": {
+		"@types/node": "^22.7.0",
+		"@typescript-eslint/eslint-plugin": "^8.17.0",
+		"@typescript-eslint/parser": "^8.17.0",
+		"esbuild-plugin-eslint": "^0.3.7",
+		"eslint": "^8.2.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-import-resolver-typescript": "^3.7.0",
+		"rollup": "^4.40.2",
+		"@rollup/plugin-commonjs": "^28.0.3",
+		"@rollup/plugin-node-resolve": "^16.0.1",
+		"@rollup/plugin-typescript": "^12.1.2",
+		"rollup-plugin-dts": "^6.2.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.6.2"
+	}
+}
