@@ -1,9 +1,9 @@
 import { Expose, Transform, Type } from "class-transformer";
 import { IsArray } from "class-validator";
 import "reflect-metadata";
-import { Block } from "./Block.js";
-import { Item } from "./Item.js";
-import { InstanceToPlain, PlainToInstance } from "../custom-transformer/ListTransformer.js";
+import { Block } from "./Block";
+import { Item } from "./Item";
+import { InstanceToPlain, PlainToInstance } from "../custom-transformer/ListTransformer";
 
 /**
  * Represents a list containing items of type `Item`.

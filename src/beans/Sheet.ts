@@ -1,11 +1,11 @@
 import { Expose, Type } from "class-transformer";
 import { ValidateNested } from "class-validator";
 import "reflect-metadata";
-import { SheetJsonEntityType } from "../types/SheetJsonEntityType.js";
-import { BaseObject } from "./BaseObject.js";
-import { Block } from "./Block.js";
-import { List } from "./List.js";
-import { Table } from "./Table.js";
+import { SheetJsonEntityType } from "../types/SheetJsonEntityType";
+import { BaseObject } from "./BaseObject";
+import { Block } from "./Block";
+import { List } from "./List";
+import { Table } from "./Table";
 
 @Reflect.metadata("@entity", "sheet")
 @Reflect.metadata("name", "sheet")
@@ -30,11 +30,13 @@ export class Sheet extends BaseObject {
 	})
 	blocks?: Array<Block>;
 
+	constructor() {
+		super();
+		this.blocks = new Array<Block>();
+	}
+
 	getBlocks(): Array<Block> {
-		if (this.blocks == null) {
-			this.blocks = new Array<Block>;
-		}
-		return this.blocks;
+		return this.blocks!;
 	}
 
 	/**

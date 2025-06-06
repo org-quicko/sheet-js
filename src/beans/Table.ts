@@ -2,8 +2,8 @@ import { JSONArray } from "@org-quicko/core";
 import { Expose } from "class-transformer";
 import { IsArray } from "class-validator";
 import "reflect-metadata";
-import { Block } from "./Block.js";
-import { Column } from "./Column.js";
+import { Block } from "./Block";
+import { Column } from "./Column";
 
 /**
  * Represents a table containing a header and rows.
@@ -20,15 +20,18 @@ export class Table extends Block {
 	@IsArray()
 	private rows?: JSONArray;
 
+	constructor() {
+		super();
+		this.header = new JSONArray();
+		this.rows = new JSONArray();
+	}
+
 	/**
 	 * Retrieves the table's header. Initializes it if null.
 	 * @returns A `JSONArray` representing the header.
 	 */
 	getHeader(): JSONArray {
-		if (this.header == null) {
-			this.header = new JSONArray();
-		}
-		return this.header;
+		return this.header!;
 	}
 
 	/**
@@ -44,10 +47,7 @@ export class Table extends Block {
 	 * @returns A `JSONArray` representing the rows.
 	 */
 	getRows(): JSONArray {
-		if (this.rows == null) {
-			this.rows = new JSONArray();
-		}
-		return this.rows;
+		return this.rows!;
 	}
 
 

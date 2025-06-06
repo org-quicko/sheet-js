@@ -1,5 +1,5 @@
 import { TransformFnParams } from "class-transformer";
-import { Item } from "../beans/Item.js";
+import { Item } from "../beans/Item";
 
 export const PlainToInstance =
     // *** TO CLASS TRANSFORMER ***

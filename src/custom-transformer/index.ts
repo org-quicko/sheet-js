@@ -1,1 +1,1 @@
-export * from './ListTransformer.js';
+export * from './ListTransformer';

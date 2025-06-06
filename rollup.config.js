@@ -3,14 +3,24 @@ import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import { builtinModules, createRequire } from "module";
 import dts from "rollup-plugin-dts";
+import { glob } from 'glob';
+import path from "path";
 
 const require = createRequire(import.meta.url);
 const pkg = require("./package.json");
 
+const getAllSourceModules = () => {
+    return glob.sync([
+      'src/*/index.ts',
+      'src/*/*/index.ts'
+    ]).map((module) => path.posix.normalize(module).replace(/\\/g, "/"));
+}
+
+
 export default [
 	// Bundle for CommonJS and ESM with preserved module structure
 	{
-		input: "index.ts",
+		input: ["index.ts", ...getAllSourceModules()],
 		external: [...Object.keys(pkg.dependencies || {}), ...builtinModules],
 		plugins: [
 			resolve({ extensions: [".js", ".ts"], preferBuiltins: true, modulesOnly: true }),
@@ -43,15 +53,14 @@ export default [
 	},
 	// Generate declaration files
 	{
-		input: "index.ts",
-		external: ['@org-quicko/core'],
+		input: ["index.ts", ...getAllSourceModules()],
+		external: [...Object.keys(pkg.dependencies || {}), ...builtinModules],
 		plugins: [dts()],
 		output: [
 			{
 				dir: "dist/types",
-				format: "esm",
 				preserveModules: true,
-				preserveModulesRoot: "src",
+				preserveModulesRoot: ".",
 			},
 		],
 	},
