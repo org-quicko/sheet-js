@@ -1,11 +1,11 @@
 import { JSONArray, JSONObject, ConverterException, DateUtil } from "@org-quicko/core";
 import { plainToInstance } from "class-transformer";
 import * as XLSX from "xlsx";
-import { Item } from "../beans/Item.js";
-import { List } from "../beans/List.js";
-import { Sheet } from "../beans/Sheet.js";
-import { Table } from "../beans/Table.js";
-import { Workbook } from "../beans/Workbook.js";
+import { Item } from "../beans/Item";
+import { List } from "../beans/List";
+import { Sheet } from "../beans/Sheet";
+import { Table } from "../beans/Table";
+import { Workbook } from "../beans/Workbook";
 
 export class WorkbookConverter {
 	/**
@@ -69,7 +69,6 @@ export class WorkbookConverter {
 			let begin;
 			let end
 
-			// eslint-disable-next-line no-restricted-syntax
 			for (const currentLine of sheetJson.values()) {
 
 				if ((this.isEmptyLine(previousLine) && !this.isEmptyLine(currentLine)) || (previousLine == null && !this.isEmptyLine(currentLine))) {
@@ -130,13 +129,11 @@ export class WorkbookConverter {
 			tableObject.set('@entity', 'table');
 			tableObject.set('name', name)
 
-			// eslint-disable-next-line no-param-reassign
 			begin += 1;
 			for (let i = begin; i <= end; i += 1) {
 				const currentLine = sheetJson[i];
 				if (i === begin) {
 					const headers = new JSONArray([]);
-					// eslint-disable-next-line no-restricted-syntax
 					for (const cell of Object.values(currentLine)) {
 						if (typeof cell === "string")
 							headers.push(cell.trim());
@@ -162,7 +159,6 @@ export class WorkbookConverter {
 									rowObject.push(cell);
 								}
 							} else {
-								// eslint-disable-next-line no-nested-ternary
 								rowObject.push(cell != null ? (DateUtil.isValidDate(cell.trim(), "MM/dd/yyyy") ? DateUtil.readDate(cell.trim(), "MM/dd/yyyy").getTime() : cell) : cell);
 							}
 						}
@@ -198,7 +194,6 @@ export class WorkbookConverter {
 
 					const header: JSONObject = sheetJson[i];
 
-					// eslint-disable-next-line no-restricted-syntax
 					for (const cell of Object.values(header)) {
 						blockName = blockName.concat(cell ?? "");
 					}
@@ -236,7 +231,6 @@ export class WorkbookConverter {
 
 	private isEmptyLine = (line: JSONObject | null): boolean => {
 		if (line != null) {
-			// eslint-disable-next-line no-restricted-syntax
 			for (const cell of Object.values(line)) {
 				if (cell != null) return false;
 			}

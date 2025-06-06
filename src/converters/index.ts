@@ -1,1 +1,1 @@
-export * from './WorkbookConverter.js';
+export * from './WorkbookConverter';

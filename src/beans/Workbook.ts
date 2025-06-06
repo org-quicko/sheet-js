@@ -1,9 +1,9 @@
 import { Expose, Type } from "class-transformer";
 import { ValidateNested } from "class-validator";
 import "reflect-metadata";
-import { WorkbookConverter } from "../converters/WorkbookConverter.js";
-import { BaseObject } from "./BaseObject.js";
-import { Sheet } from "./Sheet.js";
+import { WorkbookConverter } from "../converters/WorkbookConverter";
+import { BaseObject } from "./BaseObject";
+import { Sheet } from "./Sheet";
 
 /**
  * Represents a workbook containing multiple sheets.
@@ -18,16 +18,18 @@ export class Workbook extends BaseObject {
 	@Type(() => Sheet)
 	sheets?: Array<Sheet>;
 
+	constructor() {
+		super();
+		this.sheets = new Array<Sheet>();
+	}
+
 	/**
 	 * Retrieves all sheets in the workbook.
 	 * Initializes the sheets array if it is null.
 	 * @returns An array of `Sheet` objects.
 	 */
 	getSheets(): Array<Sheet> {
-		if (this.sheets == null) {
-			this.sheets = new Array<Sheet>();
-		}
-		return this.sheets;
+		return this.sheets!;
 	}
 
 	/**

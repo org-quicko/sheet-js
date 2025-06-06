@@ -1,1 +1,1 @@
-export * from './SheetJsonEntityType.js';
+export * from './SheetJsonEntityType';

@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { BaseObject } from "./BaseObject.js";
+import { BaseObject } from "./BaseObject";
 
 
 @Reflect.metadata("@entity", "block")
