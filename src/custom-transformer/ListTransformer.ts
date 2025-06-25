@@ -3,17 +3,24 @@ import { TransformFnParams } from "class-transformer";
 import { Item } from "../beans";
 
 export const PlainToInstance =
-    ({ obj }: TransformFnParams): Array<Item> | undefined => obj.items.map((item: object) => {
-        if (item && typeof item === 'object' && !Array.isArray(item)) {
-            const entries = Object.entries(item);
-            if (entries.length > 0) {
-                const [key, val] = entries[0];
-                return new Item(key, val);
-            }
+    ({ obj }: TransformFnParams): Array<Item> | undefined => {
+        
+        if (!obj || !Array.isArray(obj.items)) {
+            return undefined;
         }
-        return null;
-    }).filter((item): item is Item => item !== null);
 
+        return obj.items.map((item: object) => {
+            if (item && typeof item === 'object' && !Array.isArray(item)) {
+                const entries = Object.entries(item);
+                if (entries.length > 0) {
+                    const [key, val] = entries[0];
+                    return new Item(key, val);
+                }
+            }
+            return null;
+        }).filter((item): item is Item => item !== null);
+
+    }
 
 
 
