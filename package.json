@@ -1,6 +1,6 @@
 {
 	"name": "@org-quicko/sheet",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "TypeScript toolkit featuring spreadsheet-like data structure & related utilities for modern internet applications.",
 	"author": "Quicko <developer@quicko.org.in>",
 	"main": "dist/cjs/index.cjs",
