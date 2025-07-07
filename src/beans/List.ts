@@ -21,6 +21,11 @@ export class List extends Block {
 	@IsArray()
 	private items?: Array<Item>;
 
+	constructor() {
+		super();
+		this.items = new Array<Item>();
+	}
+
 
 	/**
 	 * Retrieves all items in the list. Initializes the list if it is null.
