@@ -19,7 +19,12 @@ export class List extends Block {
 
 	@Expose()
 	@IsArray()
-	private items?: Array<Item>;
+	private items: Array<Item>;
+
+	constructor() {
+		super();
+		this.items = new Array<Item>();
+	}
 
 
 	/**

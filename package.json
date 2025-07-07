@@ -1,6 +1,6 @@
 {
 	"name": "@org-quicko/sheet",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "TypeScript toolkit featuring spreadsheet-like data structure & related utilities for modern internet applications.",
 	"author": "Quicko <developer@quicko.org.in>",
 	"main": "dist/cjs/index.cjs",
@@ -11,6 +11,7 @@
 		"clean": "rm -rf dist && npm cache clean --force",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
+		"test": "jest",
 		"prebuild": "npm run clean && npm run lint",
 		"build": "rollup -c"
 	},
