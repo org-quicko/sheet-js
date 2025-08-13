@@ -1,6 +1,6 @@
 import { JSONObject } from "@org-quicko/core";
 import { TransformFnParams } from "class-transformer";
-import { Item } from "../beans";
+import { Item } from "../beans/Item";
 
 export const PlainToInstance =
     ({ obj }: TransformFnParams): Array<Item> | undefined => {
